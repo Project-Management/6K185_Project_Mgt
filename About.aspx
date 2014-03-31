@@ -92,7 +92,7 @@
 					<div class="text1 col2">Interested in our project and would like to know more?</div>
 					<p>The files following may give you a better understanding on our system</p>
 					<ul class="list">
-                        <li><a href="#">Project Documentation</a></li>
+                        <li><a href="documents/Capstone%20Project%20Documentation.pdf">Project Documentation</a></li>
                         <li><a href="documents/Architecture Diagram.pdf">Architecture Diagram</a></li>
 						<li><a href="documents/Business Domain Model.pdf">Business Domain Model</a></li>
 						<li><a href="documents/ER Model.pdf">ER Diagram</a></li>
