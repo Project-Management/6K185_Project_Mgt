@@ -273,30 +273,31 @@ Partial Class employer_AddNewProject
 
         End Using
 
-        Dim TaskName As String = tb_Task1.Text
-        Dim TaskDescription As String = tb_TaskDescription1.Text
-        Dim EmployeeId As String = ""
+        Dim num As Integer = (Me.targetTable.Rows.Count / 2) - 3
         Dim Finished As Integer = 0
+        Dim taskname As String
+        Dim taskdescription As String
 
+        For i As Integer = 1 To num
+            taskname = CType(Page.FindControl("tb_Task" & i), TextBox).Text
+            taskdescription = CType(Page.FindControl("tb_TaskDescription" & i), TextBox).Text
+            Dim connectionstring3 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
+            Dim updateSql1 As String = "INSERT INTO [Task] ([TaskName], [TaskDescription], [ProjectId],[Finished]) VALUES (@TaskName, @TaskDescription, @ProjectId, @Finished)"
 
-        Dim connectionstring3 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
-        Dim updateSql1 As String = "INSERT INTO [Task] ([TaskId], [TaskName], [TaskDescription], [ProjectId], [EmployeeId], [Finished]) VALUES (@TaskId, @TaskName, @TaskDescription, @ProjectId, @EmployeeId, @Finished)"
+            Using myConnection1 As New SqlConnection(connectionstring3)
+                myConnection1.Open()
+                Dim myCommand1 As New SqlCommand(updateSql1, myConnection1)
 
-        Using myConnection As New SqlConnection(connectionstring3)
-            myConnection.Open()
-            Dim myCommand As New SqlCommand(updateSql, myConnection)
+                myCommand1.Parameters.Add(New SqlParameter("@TaskName", taskname))
+                myCommand1.Parameters.Add(New SqlParameter("@TaskDescription", taskdescription))
+                myCommand1.Parameters.Add(New SqlParameter("@ProjectId", ProjectId))
+                myCommand1.Parameters.Add(New SqlParameter("@Finished", Finished))
 
-            myCommand.Parameters.Add(New SqlParameter("@TaskName", TaskName))
-            myCommand.Parameters.Add(New SqlParameter("@TaskDescription", TaskDescription))
-            myCommand.Parameters.Add(New SqlParameter("@ProjectId", ProjectId))
-            myCommand.Parameters.Add(New SqlParameter("@EmployeeId", EmployeeId))
-            myCommand.Parameters.Add(New SqlParameter("@Finished", Finished))
+                myCommand1.ExecuteNonQuery()
+                myConnection1.Close()
 
-            myCommand.ExecuteNonQuery()
-            myConnection.Close()
-
-        End Using
-
+            End Using
+        Next
     End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -396,7 +397,6 @@ Partial Class employer_AddNewProject
         Dim tb1 As TextBox
         tb1 = CType(Page.FindControl("tb_TaskDescription" & num), TextBox)
 
-        ' txtbox = CType(Page.FindControl("tb_Task" & num), TextBox).Text = Nothing
         If tb.Text = "" Then
             tb.BorderColor = Drawing.Color.Red
         ElseIf tb1.Text = "" Then
