@@ -144,13 +144,6 @@ Partial Class employer_AddNewProject
                 Me.PopulateDay()
             End If
         Else
-            If (Not (Request.Form(ddlDay.UniqueID)) Is Nothing) Then
-                Me.PopulateDay()
-                ddlDay.ClearSelection()
-                ddlDay.Items.FindByValue(Request.Form(ddlDay.UniqueID)).Selected = True
-                ddlDay1.ClearSelection()
-                ddlDay1.Items.FindByValue(Request.Form(ddlDay.UniqueID)).Selected = True
-            End If
         End If
 
         Try
@@ -298,6 +291,7 @@ Partial Class employer_AddNewProject
 
             End Using
         Next
+        Response.Redirect("ViewAllProjects.aspx")
     End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
@@ -407,7 +401,7 @@ Partial Class employer_AddNewProject
             tb.BorderColor = Drawing.Color.FromName("#8c8989")
             tb1.BorderColor = Drawing.Color.FromName("#8c8989")
         End If
-
+        btn_Submit.Focus()
     End Sub
 
     Protected Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
@@ -423,6 +417,7 @@ Partial Class employer_AddNewProject
 
             Me._additionalRowCount -= 1
         End If
+        btn_Submit.Focus()
     End Sub
 End Class
 
