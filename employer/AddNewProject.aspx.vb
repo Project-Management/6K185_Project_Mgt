@@ -123,7 +123,7 @@ Partial Class employer_AddNewProject
         lt.Value = "0"
         ddlYear.Items.Add(lt)
         ddlYear1.Items.Add(lt)
-        Dim i As Integer = DateTime.Now.Year
+        Dim i As Integer = DateTime.Now.Year + 1
         Do While (i >= 1950)
             lt = New ListItem
             lt.Text = i.ToString
