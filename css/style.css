@@ -766,6 +766,12 @@ a.button {
     width:400px;
 }
 
+.projectTitle {
+    color: #a2cac2;
+    margin-top:10px;
+	font: bold 18px 'Open Sans', sans-serif;
+}
+
 /****Map***/
 
 .col1 {
@@ -1025,7 +1031,7 @@ footer a:hover {
 	position: absolute;
 	overflow: hidden;
 	left: 50%;
-	top: 50%;
+	top: 150px;
 	margin-top: 9px;
 	z-index: 999;
 	margin-left: -65px;
@@ -1052,7 +1058,7 @@ footer a:hover {
 	position: relative;
 	overflow: hidden;
 	background: #bfdde8;
-	height: 321px;
+	height: 260px;
 }
 
 .grid a+a figure  {

@@ -82,7 +82,7 @@
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						                    <figcaption>
-						                    <div class="title">Project&nbsp;<%#Eval("ProjectId")%></div>
+						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
 						                    </figcaption>
 					                    </figure>
                                         <span>delete</span>
