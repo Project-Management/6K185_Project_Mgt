@@ -81,14 +81,13 @@
 			<div class="container_12">
                 <section class="grid" id="grid">
 				<br /><br />
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" SelectCommand="SELECT * FROM [Project]"></asp:SqlDataSource>
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                <asp:Repeater ID="Repeater1" runat="server">
                     <itemTemplate>
                         <a href="ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,70.57627 -180,0 L 0,0 180,0 z">
 					        <figure>
 						        <svg viewBox="0 0 100 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						        <figcaption>
-						        <div class="projectTitle"><%#Eval("ProjectName")%></div>
+                                <div class="projectTitle"><%#Eval("ProjectName")%></div>
 						        </figcaption>
 					        </figure>
 					        <span>more</span>
@@ -97,8 +96,15 @@
                     </itemTemplate>
                 </asp:Repeater>
             </section>
+
 			<div class="clear"></div>
-					
+			<asp:Repeater ID="rptPager" runat="server">
+                <ItemTemplate>                    
+                    <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
+                     CssClass='<%# If(Convert.ToBoolean(Eval("Enabled")), "btn1", "page_disabled")%>'
+                     OnClick="Page_Changed" OnClientClick='<%# If(Not Convert.ToBoolean(Eval("Enabled")), "return false;", "") %>'></asp:LinkButton>
+                </ItemTemplate>
+            </asp:Repeater>			
 			</div>
 			
 		</div>

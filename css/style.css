@@ -1057,20 +1057,36 @@ footer a:hover {
 .grid figure {
 	position: relative;
 	overflow: hidden;
-	background: #bfdde8;
+	background: #fbbbb9;
 	height: 260px;
 }
 
 .grid a+a figure  {
-	background-color: #cebfd4;
+	background-color: #fff380;
 }
 
 .grid a+a+a figure  {
-	background-color: #d37ba3;
+	background-color: #c1f3ff;
 }
 
 .grid a+a+a+a figure  {
-	background-color: #a2cac2;
+	background-color: #d2b9d3;
+}
+
+.grid a+a+a+a+a figure  {
+	background-color: #F75D59;
+}
+
+.grid a+a+a+a+a+a figure  {
+	background-color: #ff8040;
+}
+
+.grid a+a+a+a+a+a+a figure  {
+	background-color: #b5eaaa;
+}
+
+.grid a+a+a+a+a+a+a+a figure  {
+	background-color: #b4cfec;
 }
 
 .grid figure img {
