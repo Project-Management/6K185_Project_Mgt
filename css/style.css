@@ -142,6 +142,18 @@ a.btn:hover {
 	color: #fff;
 }
 
+a.btn1 {
+}
+
+a.btn1:hover {
+	color: #a2cac2;
+}
+
+
+a.btn2 {
+	color: black;
+}
+
 /*preclass*/
 
 .mb0 {
@@ -1057,36 +1069,36 @@ footer a:hover {
 .grid figure {
 	position: relative;
 	overflow: hidden;
-	background: #fbbbb9;
+	background: #94ffc6;
 	height: 260px;
 }
 
 .grid a+a figure  {
-	background-color: #fff380;
+	background-color: #83e8df;
 }
 
 .grid a+a+a figure  {
-	background-color: #c1f3ff;
+	background-color: #90bffa;
 }
 
 .grid a+a+a+a figure  {
-	background-color: #d2b9d3;
+	background-color: #89a1eb;
 }
 
 .grid a+a+a+a+a figure  {
-	background-color: #F75D59;
+	background-color: #ff92d6;
 }
 
 .grid a+a+a+a+a+a figure  {
-	background-color: #ff8040;
+	background-color: #ee8af2;
 }
 
 .grid a+a+a+a+a+a+a figure  {
-	background-color: #b5eaaa;
+	background-color: #b987e0;
 }
 
 .grid a+a+a+a+a+a+a+a figure  {
-	background-color: #b4cfec;
+	background-color: #a17bf2;
 }
 
 .grid figure img {
