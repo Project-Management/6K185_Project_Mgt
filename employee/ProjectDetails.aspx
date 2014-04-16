@@ -78,7 +78,7 @@
                         <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProjectId,TaskId" DataSourceID="SqlDataSource1">
                             <ItemTemplate>
                                 <section class="grid" id="grid">
-                                    <a href="#" data-path-hover="m 180,70.57627 -180,0 L 0,0 180,0 z">
+                                    <a href="#" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						                    <figcaption>
