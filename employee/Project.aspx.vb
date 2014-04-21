@@ -2,7 +2,7 @@
 Imports System.Data.SqlClient
 Imports System.Configuration
 
-Partial Class Project
+Partial Class employee_Project
     Inherits System.Web.UI.Page
     Private PageSize As Integer = 8
 

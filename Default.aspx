@@ -22,7 +22,7 @@
 		            pagination: true,
 		            minHeight: '394',
 		            thumbnails: false,
-		            height: '450px',
+		            height: '480px',
 		            caption: false,
 		            navigation: false,
 		            fx: 'mosaic'

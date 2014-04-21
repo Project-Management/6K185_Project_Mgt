@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Profile.aspx.vb" Inherits="employee_Profile" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="EmployeeDetails.aspx.vb" Inherits="employer_EmployeeDetails" %>
 
 <!DOCTYPE html>
 
@@ -81,7 +81,7 @@
                     <ItemTemplate>
 
                         <div class="grid_12">
-					        <h2 class="mb0">My Profile</h2>
+					        <h2 class="mb0"><a href="ViewAllEmployees.aspx">Staff Information</a></h2>
 				        </div>
                         <br /><br /><br /><br /><br /><br />
                         <div class="profilePicture">
@@ -130,7 +130,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <asp:HyperLink ID="edit" runat="server" class="btn" style="cursor:pointer" NavigateUrl="~/employee/EditProfile.aspx">Edit My Profile</asp:HyperLink>
+                                <a href="EditProfile.aspx?UserId=<%#Eval("UserId")%>"  class="btn" style="cursor:pointer" >Edit Profile</a>
                             </div>
 
                         </div>
@@ -146,10 +146,9 @@
 
 
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
-                    SelectCommand="SELECT aspnet_Users.UserName, StaffInfo.*, Department.* FROM aspnet_Users INNER JOIN StaffInfo ON aspnet_Users.UserId = StaffInfo.UserId INNER JOIN Department ON StaffInfo.DepartmentId = Department.DepartmentId WHERE ([UserName] = @UserName)"
-                    onselecting="SqlDataSource1_Selecting">
+                    SelectCommand="SELECT aspnet_Users.UserName, StaffInfo.*, Department.* FROM aspnet_Users INNER JOIN StaffInfo ON aspnet_Users.UserId = StaffInfo.UserId INNER JOIN Department ON StaffInfo.DepartmentId = Department.DepartmentId WHERE (aspnet_Users.UserId = @UserId)">
                     <selectparameters>
-		                <asp:parameter name="UserName" type="String" />
+		                <asp:QueryStringParameter Name="UserId" QueryStringField="UserId" Type="String" />
 	                </selectparameters>
                 </asp:SqlDataSource>
 

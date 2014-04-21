@@ -48,6 +48,13 @@ h3 {
 	margin-bottom: 46px;
 }
 
+h4 {
+	font-size: 30px;
+	line-height: 30px;
+	color: #585858;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
 
 p {
 	margin-bottom: 20px;
@@ -219,6 +226,108 @@ a.btn2 {
 	clear: both;
 }
 
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+    .row:before, .row:after {
+        display: table;
+        content: " ";
+    }
+.row:after{clear:both}
+    .row:before, .row:after {
+        display: table;
+        content: " ";
+    }
+    .row:after {
+        clear: both;
+    }
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+    .nav:before, .nav:after {
+        display: table;
+        content: " ";
+    }
+    .nav:after {
+        clear: both;
+    }
+    .nav:before, .nav:after {
+        display: table;
+        content: " ";
+    }
+    .nav:after {
+        clear: both;
+    }
+    .nav > li {
+        position: relative;
+        display: block;
+    }
+        .nav > li > a {
+            position: relative;
+            display: block;
+            padding: 10px 15px;
+        }
+            .nav > li > a:hover, .nav > li > a:focus {
+                text-decoration: none;
+                background-color: #eee;
+            }
+        .nav > li.disabled > a {
+            color: #999;
+        }
+            .nav > li.disabled > a:hover, .nav > li.disabled > a:focus {
+                color: #999;
+                text-decoration: none;
+                cursor: not-allowed;
+                background-color: transparent;
+            }
+    .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+        background-color: #eee;
+        border-color: #a2cac2;
+    }
+    .nav .open > a .caret, .nav .open > a:hover .caret, .nav .open > a:focus .caret {
+        border-top-color: #a2cac2;
+        border-bottom-color: #a2cac2;
+    }
+
+.nav-pills > li {
+    float: left;
+}
+    .nav-pills > li > a {
+        border-radius: 4px;
+    }
+    .nav-pills > li + li {
+        margin-left: 10px;
+    }
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        color: #fff;
+        background-color: #a2cac2;
+    }
+        .nav-pills > li.active > a .caret, .nav-pills > li.active > a:hover .caret, .nav-pills > li.active > a:focus .caret {
+            border-top-color: #fff;
+            border-bottom-color: #fff;
+        }
+
+.col-md-12, .col-lg-12 {
+            position: relative;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+[data-toggle="buttons"] > .btn > input[type="radio"], [data-toggle="buttons"] > .btn > input[type="checkbox"] {
+    display: none;
+}
+
+.tab-content > .tab-pane {
+    display: none;
+}
+.tab-content > .active {
+    display: block;
+}
 
 /*header*/
 
@@ -413,7 +522,6 @@ a.btn.bt1 {
 
 .block3 img {
 	border: 5px solid #bfdde8;
-	margin-bottom: 43px;
 }
 
 .text2 {
@@ -653,6 +761,33 @@ ul.list.l1+ul.list.l1 {
     border:1px solid rgba(241,39,242,.75);
 }
 
+#delete {
+    margin: 0px 200px;
+    padding-top: 10px;
+    height: 550px;
+    background-color: #fff;
+    width: auto;
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border-radius: 5px 5px 5px 5px;
+}
+
+#delete:hover{
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border:1px solid rgba(241,39,242,.75);
+}
+
 a.button {
     background-image: url("../images/login.png");
     background-position: -5px -4px;
@@ -677,6 +812,12 @@ a.button {
     margin:0 auto;
     width:380px;
 }
+
+.deleteBtn {
+    margin-top:260px;
+}
+
+
 
 .logintextbox {
     border:1px solid #8c8989;
@@ -778,11 +919,32 @@ a.button {
     width:400px;
 }
 
+.profileDescription {
+    margin-top: 0px;
+    margin-left:400px;
+    width:500px;
+    height:120px;
+    margin-bottom:50px;
+}
+
+.filterBar {
+    margin-left:370px;
+    width:520px;
+    margin-bottom:20px;
+}
+
+.profilePicture {
+    width:250px;
+    height:0px;
+}
+
 .projectTitle {
     color: #a2cac2;
     margin-top:35px;
 	font: bold 18px 'Open Sans', sans-serif;
 }
+
+
 
 /****Map***/
 

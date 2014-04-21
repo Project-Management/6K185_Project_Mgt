@@ -95,7 +95,8 @@
                                     <br /><br />
                                     <%#Eval("DepartmentName")%>
                                     <br /><br />
-                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br /></div>
+                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br />
+                                </div>
                             </ItemTemplate>
                         </asp:FormView>
                     

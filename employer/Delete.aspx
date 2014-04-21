@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ViewAllEmployees.aspx.vb" Inherits="employer_ViewAllEmployees" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Delete.aspx.vb" Inherits="employer_Delete" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Manage Users | Project Management System</title>
+		<title>Message | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,12 +13,11 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-		<script>
-		    $(document).ready(function () {
-		        $().UItoTop({ easingType: 'easeOutQuart' });
-		    })
+        <script>
+            $(document).ready(function () {
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            })
 		</script>
-		
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -70,35 +69,44 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-				<div class="grid_12">
-					<h2 class="mb0">Our Employees</h2>
+                <div id="delete">
+                    <div class="autobox">
+                        <h2>Delete Message</h2>
+                        <p>Are you sure you want to delete the following user?</p>
 
-				</div>
-			</div>
-		</div>
-		<div class="gray_block gb1">
-			<div class="container_12">
-                <br /><br />
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" SelectCommand="SELECT * FROM [StaffInfo]"></asp:SqlDataSource>
-                <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
-                    <itemTemplate>
-                        
-                        <div class="grid_3">
-					        <div class="block3 bd1">
-						        <asp:Image ID="ImgProfile" runat="server" src='<%# Eval ("Photo", "../images/employee/{0}") %>' />
-						        <div class="text2"><a href="EmployeeDetails.aspx?UserId=<%#Eval("UserId")%>" ><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></a></div>
-						
-					        </div>
-				        </div>
 
-                    </itemTemplate>
-                </asp:Repeater>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                            SelectCommand="SELECT aspnet_Users.UserName, StaffInfo.*, Department.* FROM aspnet_Users INNER JOIN StaffInfo ON aspnet_Users.UserId = StaffInfo.UserId INNER JOIN Department ON StaffInfo.DepartmentId = Department.DepartmentId WHERE (aspnet_Users.UserId = @UserId)">
+                            <selectparameters>
+		                        <asp:QueryStringParameter Name="UserId" QueryStringField="UserId" Type="String" />
+	                        </selectparameters>
+                        </asp:SqlDataSource>
 
-                <div class="clear"></div>
-					
-			</div>
+
+
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                            <itemTemplate>
+
+                                <div class="profilePicture">
+                                    <div class="block3">
+                                        <asp:Image ID="ImgProfile" runat="server" src='<%# Eval ("Photo", "../images/employee/{0}") %>' />
+                                        <br />
+                                        <div class="text2"><a href="./EmployeeDetails.aspx?UserId=<%#Eval("UserId")%>" ><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></a></div>
+                                    </div>
+                                </div>
+
+                            </itemTemplate>
+                        </asp:Repeater>
+                        <div class="deleteBtn">
+                            <asp:LinkButton ID="No" runat="server" CssClass="btn">No</asp:LinkButton>
+                            <asp:LinkButton ID="Yes" runat="server" CssClass="btn">Yes</asp:LinkButton>
+                        </div>
+				    </div>
+
+			    </div>
 			
-		</div>
+		    </div>
+        </div>
 <!--==============================footer=================================-->
 		<footer>
 			<div class="container_12">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Project.aspx.vb" Inherits="Project" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Project.aspx.vb" Inherits="employee_Project" %>
 
 <!DOCTYPE html>
 

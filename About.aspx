@@ -113,28 +113,28 @@
 				</div>
 				<div class="grid_3">
 					<div class="block3">
-						<img src="images/zhaoyang.jpg" alt="" />
+						<img src="images/employee/746232938.jpg" alt="" />
 						<div class="text2"><a href="http://myweb.uiowa.edu/zhadai" target="_blank">Zhaoyang Dai</a></div>
 						Web Developer & Data Analyst
 					</div>
 				</div>
 				<div class="grid_3">
 					<div class="block3 bd1">
-						<img src="images/haoran.jpg" alt="" />
+						<img src="images/employee/123456789.jpg" alt="" />
 						<div class="text2"><a href="http://www.haoranwang.net" target="_blank">Haoran Wang</a></div>
 						
 					</div>
 				</div>
 				<div class="grid_3">
 					<div class="block3 bd2">
-						<img src="images/min.jpg" alt="" />
+						<img src="images/employee/123453235.jpg" alt="" />
 						<div class="text2"><a href="#">Min Yang</a></div>
 						
 					</div>
 				</div>
 				<div class="grid_3">
 					<div class="block3 bd3">
-						<img src="images/chang.jpg" alt="" />
+						<img src="images/employee/987654321.jpg" alt="" />
 						<div class="text2"><a href="#">Chang Shang</a></div>
 						
 					</div>

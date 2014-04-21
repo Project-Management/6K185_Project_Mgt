@@ -78,7 +78,7 @@ Partial Class employer_AddNewEmployee
         ddlDay1.Items.Add(lt)
         Dim days As Integer = DateTime.DaysInMonth(Me.Year, Me.Month)
         Dim i As Integer = 1
-        Do While (i <= days)
+        Do While (i <= 31)
             lt = New ListItem
             lt.Text = i.ToString
             lt.Value = i.ToString
