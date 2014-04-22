@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Delete.aspx.vb" Inherits="employer_Delete" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="DeleteStaff.aspx.vb" Inherits="employer_Delete" %>
 
 <!DOCTYPE html>
 

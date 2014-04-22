@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Manage Projects | Project Management System</title>
+		<title>Projects | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,6 +13,7 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
+		<script src="../js/snap.svg-min.js"></script>
 		<script>
 		    $(document).ready(function () {
 		        $().UItoTop({ easingType: 'easeOutQuart' });
@@ -78,9 +79,32 @@
 		</div>
 		<div class="gray_block gb1">
 			<div class="container_12">
-                profile
-                <div class="clear"></div>
-					
+                <section class="grid" id="grid">
+				<br /><br />
+                <asp:Repeater ID="Repeater1" runat="server">
+                    <itemTemplate>
+                        <a href="ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+					        <figure>
+						        <svg viewBox="0 0 100 320" preserveAspectRatio="none"><path d="M 180,80 0,262 0,0 180,0 z"/></svg>
+						        <figcaption>
+                                <div class="projectTitle"><%#Eval("ProjectName")%></div>
+						        </figcaption>
+					        </figure>
+					        <span>more</span>
+                            <br /><br />
+				        </a>
+                    </itemTemplate>
+                </asp:Repeater>
+            </section>
+
+			<div class="clear"></div>
+			<asp:Repeater ID="rptPager" runat="server">
+                <ItemTemplate>                    
+                    <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
+                     CssClass='<%# If(Convert.ToBoolean(Eval("Enabled")), "btn1", "btn2")%>'
+                     OnClick="Page_Changed" OnClientClick='<%# If(Not Convert.ToBoolean(Eval("Enabled")), "return false;", "") %>'></asp:LinkButton>
+                </ItemTemplate>
+            </asp:Repeater>			
 			</div>
 			
 		</div>
@@ -123,6 +147,26 @@
 		            $('.content').css('background-color', bgColor);
 		        });
 		    });
+		    (function () {
+		        function init() {
+		            var speed = 250,
+                    easing = mina.easeinout;
+		            [].slice.call(document.querySelectorAll('#grid > a')).forEach(function (el) {
+		                var s = Snap(el.querySelector('svg')), path = s.select('path'),
+                            pathConfig = {
+                                from: path.attr('d'),
+                                to: el.getAttribute('data-path-hover')
+                            };
+		                el.addEventListener('mouseenter', function () {
+		                    path.animate({ 'path': pathConfig.to }, speed, easing);
+		                });
+		                el.addEventListener('mouseleave', function () {
+		                    path.animate({ 'path': pathConfig.from }, speed, easing);
+		                });
+		            });
+		        }
+		        init();
+		    })();
 		</script>
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     </form>

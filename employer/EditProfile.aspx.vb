@@ -296,7 +296,7 @@ Partial Class employee_EditProfile
         Dim UserId As String
         UserId = Request.QueryString("UserId")
 
-        Response.Redirect("./Delete.aspx?UserId=" & UserId)
+        Response.Redirect("./DeleteStaff.aspx?UserId=" & UserId)
 
     End Sub
 End Class

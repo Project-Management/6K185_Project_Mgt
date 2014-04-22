@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Project.aspx.vb" Inherits="employee_Project" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ProjectDetails.aspx.vb" Inherits="employee_ProjectDetails" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Projects | Project Management System</title>
+		<title>Profile | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -73,43 +73,75 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h2 class="mb0">Our Projects</h2>
+                    <br /><br />
+                    
+                        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProjectId,TaskId" DataSourceID="SqlDataSource1">
+                            <ItemTemplate>
+                                <section class="grid" id="grid">
+                                    <a href="./DeleteProject.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+					                    <figure>
+						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
+						                    <figcaption>
+						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
+						                    </figcaption>
+					                    </figure>
+                                        <span>delete</span>
+                                        
+				                    </a>
+                                </section>
+                                <div class="projectDescription">
+                                    <div class="text1 col2"><%#Eval("ProjectName")%></div>
+                                    <%#Eval("ProjectDescription")%>
+                                    <br /><br />
+                                    <%#Eval("DepartmentName")%>
+                                    <br /><br />
+                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br />
+                                </div>
+                            </ItemTemplate>
+                        </asp:FormView>
+                    
 
 				</div>
 			</div>
 		</div>
 		<div class="gray_block gb1">
 			<div class="container_12">
-                <section class="grid" id="grid">
-				<br /><br />
-                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand ="Repeater1_ItemCommand">
-                    <itemTemplate>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                    SelectCommand="SELECT Project.*, Department.*, Task.* FROM Project INNER JOIN Task ON Project.ProjectId = Task.ProjectId INNER JOIN Department ON Project.DepartmentId = Department.DepartmentId WHERE Project.ProjectId = @ProjectId">
+                    <SelectParameters>
+                        <asp:QueryStringParameter Name="ProjectId" QueryStringField="ProjectId" Type="Int64" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
 
-                        <asp:LinkButton ID="viewMore" commandName="viewMore" runat="server" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
-					        <figure>
-						        <svg viewBox="0 0 100 320" preserveAspectRatio="none"><path d="M 180,80 0,262 0,0 180,0 z"/></svg>
-						        <figcaption>
-                                <div class="projectTitle">
-                                    <%#Eval("ProjectName")%>
-                                    <asp:Label ID="lbl" runat="server" Visible ="False"><%# DataBinder.Eval(Container.DataItem, "ProjectId")%></asp:Label>
-                                </div>
-						        </figcaption>
-					        </figure>
-					        <span>more</span>
-                            <br /><br />
-                        </asp:LinkButton>
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                    SelectCommand="SELECT * FROM [Task] WHERE ([ProjectId] = @ProjectId)">
+                    <SelectParameters>
+                        <asp:QueryStringParameter Name="ProjectId" QueryStringField="ProjectId" Type="Decimal" />
+                    </SelectParameters>
+                </asp:SqlDataSource>
+
+                <h2 class="mb0">Tasks</h2>
+                <br /><br />
+                <table>
+                    <tr>
+                        <td class="text1 col2">Task Name</td>
+                        <td class="text1 col2">Task Description</td>
+                        <td class="text1 col2">Details</td>
+                    </tr>
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                        <itemTemplate>
+                        <tr>
+                            <td class="taskName"><%#Eval("taskName")%></td>
+                            <td class="taskDescription"><%#Eval("taskDescription")%></td>
+                            <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
+                        </tr>
                         
-                    </itemTemplate>
-                </asp:Repeater>
-            </section>
-
-			<div class="clear"></div>
-			<asp:Repeater ID="rptPager" runat="server">
-                <ItemTemplate>                    
-                    <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
-                     CssClass='<%# If(Convert.ToBoolean(Eval("Enabled")), "btn1", "btn2")%>'
-                     OnClick="Page_Changed" OnClientClick='<%# If(Not Convert.ToBoolean(Eval("Enabled")), "return false;", "") %>'></asp:LinkButton>
-                </ItemTemplate>
-            </asp:Repeater>			
+                        </itemTemplate>
+                    </asp:Repeater>
+                </table>
+                <div class="clear"></div>
+					
 			</div>
 			
 		</div>
@@ -125,6 +157,7 @@
 					<div class="clear"></div>
 					<div class="copy">
 						Copyright &copy; 2014 CapStone Project - the University of Iowa
+					
 					</div>
 				</div>
 			</div>

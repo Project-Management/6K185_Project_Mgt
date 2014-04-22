@@ -78,7 +78,7 @@
                         <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProjectId,TaskId" DataSourceID="SqlDataSource1">
                             <ItemTemplate>
                                 <section class="grid" id="grid">
-                                    <a href="#" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+                                    <a href="./DeleteStaff.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						                    <figcaption>
@@ -123,20 +123,6 @@
 
                 <h2 class="mb0">Tasks</h2>
                 <br /><br />
-
-
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="TaskId" DataSourceID="SqlDataSource2">
-                    <Columns>
-                        <asp:BoundField DataField="TaskId" HeaderText="TaskId" InsertVisible="False" ReadOnly="True" SortExpression="TaskId" />
-                        <asp:BoundField DataField="TaskName" HeaderText="TaskName" SortExpression="TaskName" />
-                        <asp:BoundField DataField="TaskDescription" HeaderText="TaskDescription" SortExpression="TaskDescription" />
-                        <asp:BoundField DataField="ProjectId" HeaderText="ProjectId" SortExpression="ProjectId" />
-                        <asp:BoundField DataField="EmployeeId" HeaderText="EmployeeId" SortExpression="EmployeeId" />
-                        <asp:BoundField DataField="Finished" HeaderText="Finished" SortExpression="Finished" />
-                    </Columns>
-                </asp:GridView>
-
-
                 <table>
                     <tr>
                         <td class="text1 col2">Task Name</td>

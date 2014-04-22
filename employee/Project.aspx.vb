@@ -9,6 +9,7 @@ Partial Class employee_Project
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             Me.GetCustomersPageWise(1)
+
         End If
     End Sub
 
@@ -49,6 +50,53 @@ Partial Class employee_Project
     Protected Sub Page_Changed(sender As Object, e As EventArgs)
         Dim pageIndex As Integer = Integer.Parse(TryCast(sender, LinkButton).CommandArgument)
         Me.GetCustomersPageWise(pageIndex)
+    End Sub
+
+    Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
+
+        If e.CommandName = "viewMore" Then
+
+            Dim UserName As String
+            UserName = User.Identity.Name
+
+            Dim UserId As String
+            Dim connectionString As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
+            Dim conn As New SqlConnection(connectionString)
+            conn.Open()
+            Dim comm As New SqlCommand("SELECT UserId FROM aspnet_Users WHERE (UserName = '" & UserName & "')", conn)
+            Dim reader As SqlDataReader = comm.ExecuteReader()
+            reader.Read()
+            UserId = Convert.ToString(reader("UserId"))
+            conn.Close()
+
+            Dim RoleId As String
+            Dim connectionString1 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
+            Dim conn1 As New SqlConnection(connectionString1)
+            conn1.Open()
+            Dim comm1 As New SqlCommand("SELECT RoleId FROM aspnet_UsersInRoles WHERE (UserId = '" & UserId & "')", conn1)
+            Dim reader1 As SqlDataReader = comm1.ExecuteReader()
+            reader1.Read()
+            RoleId = Convert.ToString(reader1("RoleId"))
+            conn1.Close()
+
+
+            'Dim ProjectId As String = CType(e.Item.FindControl("lbl"), Label).Text
+            Dim ProjectId As String = "13"
+
+
+            If RoleId = "82165500-c257-45fe-9c67-7eafdaa205f7" Then
+
+                Response.Redirect("~/employer/ProjectDetails.aspx?ProjectId=" & ProjectId)
+
+            ElseIf RoleId = "6d2e0197-a201-4e23-ac46-cb27cd70538c" Then
+
+                Response.Redirect("~/employee/ProjectDetails.aspx?ProjectId=" & ProjectId)
+
+            End If
+
+
+        End If
+
     End Sub
 
 End Class

@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Project.aspx.vb" Inherits="employee_Project" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="DeleteProject.aspx.vb" Inherits="employer_Delete" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Projects | Project Management System</title>
+		<title>Message | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,13 +13,13 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-		<script src="../js/snap.svg-min.js"></script>
-		<script>
-		    $(document).ready(function () {
-		        $().UItoTop({ easingType: 'easeOutQuart' });
-		    })
+        <script src="../js/snap.svg-min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            })
 		</script>
-		
+
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -71,48 +71,52 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-				<div class="grid_12">
-					<h2 class="mb0">Our Projects</h2>
+                <div id="delete">
+                    <div class="autobox">
+                        <h2>Delete Message</h2>
+                        <p>Are you sure you want to delete the following project?</p>
 
-				</div>
-			</div>
-		</div>
-		<div class="gray_block gb1">
-			<div class="container_12">
-                <section class="grid" id="grid">
-				<br /><br />
-                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand ="Repeater1_ItemCommand">
-                    <itemTemplate>
 
-                        <asp:LinkButton ID="viewMore" commandName="viewMore" runat="server" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
-					        <figure>
-						        <svg viewBox="0 0 100 320" preserveAspectRatio="none"><path d="M 180,80 0,262 0,0 180,0 z"/></svg>
-						        <figcaption>
-                                <div class="projectTitle">
-                                    <%#Eval("ProjectName")%>
-                                    <asp:Label ID="lbl" runat="server" Visible ="False"><%# DataBinder.Eval(Container.DataItem, "ProjectId")%></asp:Label>
-                                </div>
-						        </figcaption>
-					        </figure>
-					        <span>more</span>
-                            <br /><br />
-                        </asp:LinkButton>
-                        
-                    </itemTemplate>
-                </asp:Repeater>
-            </section>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                            SelectCommand="SELECT * FROM Project WHERE (ProjectId = @ProjectId)">
+                            <selectparameters>
+		                        <asp:QueryStringParameter Name="ProjectId" QueryStringField="ProjectId" Type="String" />
+	                        </selectparameters>
+                        </asp:SqlDataSource>
 
-			<div class="clear"></div>
-			<asp:Repeater ID="rptPager" runat="server">
-                <ItemTemplate>                    
-                    <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
-                     CssClass='<%# If(Convert.ToBoolean(Eval("Enabled")), "btn1", "btn2")%>'
-                     OnClick="Page_Changed" OnClientClick='<%# If(Not Convert.ToBoolean(Eval("Enabled")), "return false;", "") %>'></asp:LinkButton>
-                </ItemTemplate>
-            </asp:Repeater>			
-			</div>
+
+
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                            <itemTemplate>
+
+                                <section class="grid" id="grid">
+
+                                    <a href="./ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+
+					                    <figure>
+						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
+						                    <figcaption>
+						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
+						                    </figcaption>
+					                    </figure>
+                                        <span>view</span>
+                                        
+				                    </a>
+                                </section>
+
+                            </itemTemplate>
+                        </asp:Repeater>
+                        <br />
+                        <div class="deleteBtn">
+                            <asp:LinkButton ID="No" runat="server" CssClass="btn">No</asp:LinkButton>
+                            <asp:LinkButton ID="Yes" runat="server" CssClass="btn">Yes</asp:LinkButton>
+                        </div>
+				    </div>
+
+			    </div>
 			
-		</div>
+		    </div>
+        </div>
 <!--==============================footer=================================-->
 		<footer>
 			<div class="container_12">
