@@ -91,11 +91,13 @@
                                 </section>
                                 <div class="projectDescription">
                                     <div class="text1 col2"><%#Eval("ProjectName")%></div>
-                                    <%#Eval("ProjectDescription")%>
-                                    <br /><br />
                                     <%#Eval("DepartmentName")%>
                                     <br /><br />
-                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br />
+                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%>
+                                    <br /><br />
+                                    <%#Eval("ProjectDescription")%>
+                                    <br />
+                                    
                                 </div>
                             </ItemTemplate>
                         </asp:FormView>
