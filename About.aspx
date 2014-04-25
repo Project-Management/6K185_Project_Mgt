@@ -38,7 +38,6 @@
                         </li>
                         <li><a href="#">Admin</a>
                             <ul class="left">
-                                <li><a href="./employee/Search.aspx">Search</a></li>
                                 <li><a href="./employer/AddNewEmployee.aspx">Register Staff</a></li>
                                 <li><a href="./employer/AddNewProject.aspx">Release Project</a></li>
                                 <li><a href="./employer/ViewAllEmployees.aspx">View All Staffs</a></li>

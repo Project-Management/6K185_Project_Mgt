@@ -38,7 +38,6 @@
                         </li>
                         <li><a href="#">Admin</a>
                             <ul class="left">
-                                <li><a href="../employee/Search.aspx">Search</a></li>
                                 <li><a href="../employer/AddNewEmployee.aspx">Register Staff</a></li>
                                 <li><a href="../employer/AddNewProject.aspx">Release Project</a></li>
                                 <li><a href="../employer/ViewAllEmployees.aspx">View All Staffs</a></li>
@@ -72,25 +71,28 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h2 class="mb0">Our Employees</h2>
-                     <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
-                     <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
+                    
 				</div>
 			</div>
 		</div>
 		<div class="gray_block gb1">
 			<div class="container_12">
-                <br /><br />
+                <br />
+                <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
+                <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
+                <br /><br /><br />
                 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" SelectCommand="SELECT * FROM [StaffInfo]"></asp:SqlDataSource>
                 <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                     <itemTemplate>
                         
                         <div class="grid_3">
-					        <div class="block3 bd1">
+					        <div class="block3 bd4 pad">
 						        <asp:Image ID="ImgProfile" runat="server" src='<%# Eval ("Photo", "../images/employee/{0}") %>' />
 						        <div class="text2"><a href="EmployeeDetails.aspx?UserId=<%#Eval("UserId")%>" ><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></a></div>
-						
+						        
 					        </div>
 				        </div>
+
 
                     </itemTemplate>
                 </asp:Repeater>

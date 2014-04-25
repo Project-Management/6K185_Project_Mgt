@@ -268,6 +268,7 @@ Partial Class employer_AddNewProject
 
         Dim num As Integer = (Me.targetTable.Rows.Count / 2) - 3
         Dim Finished As Integer = 0
+        Dim Reject As String = "N"
         Dim taskname As String
         Dim taskdescription As String
 
@@ -275,7 +276,7 @@ Partial Class employer_AddNewProject
             taskname = CType(Page.FindControl("tb_Task" & i), TextBox).Text
             taskdescription = CType(Page.FindControl("tb_TaskDescription" & i), TextBox).Text
             Dim connectionstring3 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
-            Dim updateSql1 As String = "INSERT INTO [Task] ([TaskName], [TaskDescription], [ProjectId],[Finished]) VALUES (@TaskName, @TaskDescription, @ProjectId, @Finished)"
+            Dim updateSql1 As String = "INSERT INTO [Task] ([TaskName], [TaskDescription], [ProjectId], [Finished], [Reject]) VALUES (@TaskName, @TaskDescription, @ProjectId, @Finished, @Reject)"
 
             Using myConnection1 As New SqlConnection(connectionstring3)
                 myConnection1.Open()
@@ -285,6 +286,7 @@ Partial Class employer_AddNewProject
                 myCommand1.Parameters.Add(New SqlParameter("@TaskDescription", taskdescription))
                 myCommand1.Parameters.Add(New SqlParameter("@ProjectId", ProjectId))
                 myCommand1.Parameters.Add(New SqlParameter("@Finished", Finished))
+                myCommand1.Parameters.Add(New SqlParameter("@Reject", Reject))
 
                 myCommand1.ExecuteNonQuery()
                 myConnection1.Close()

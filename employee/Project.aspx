@@ -39,7 +39,6 @@
                         </li>
                         <li><a href="#">Admin</a>
                             <ul class="left">
-                                <li><a href="../employee/Search.aspx">Search</a></li>
                                 <li><a href="../employer/AddNewEmployee.aspx">Register Staff</a></li>
                                 <li><a href="../employer/AddNewProject.aspx">Release Project</a></li>
                                 <li><a href="../employer/ViewAllEmployees.aspx">View All Staffs</a></li>
@@ -73,13 +72,16 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h2 class="mb0">Our Projects</h2>
-                    <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
-                        <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
+
 				</div>
 			</div>
 		</div>
 		<div class="gray_block gb1">
 			<div class="container_12">
+                <br />
+                <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
+                <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
+                <br />
                 <section class="grid" id="grid">
 				<br /><br />
                 <asp:Repeater ID="Repeater1" runat="server" OnItemCommand ="Repeater1_ItemCommand">

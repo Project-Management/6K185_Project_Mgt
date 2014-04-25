@@ -39,7 +39,6 @@
                         </li>
                         <li><a href="#">Admin</a>
                             <ul class="left">
-                                <li><a href="../employee/Search.aspx">Search</a></li>
                                 <li><a href="../employer/AddNewEmployee.aspx">Register Staff</a></li>
                                 <li><a href="../employer/AddNewProject.aspx">Release Project</a></li>
                                 <li><a href="../employer/ViewAllEmployees.aspx">View All Staffs</a></li>
@@ -152,6 +151,35 @@
 		                <asp:parameter name="UserName" type="String" />
 	                </selectparameters>
                 </asp:SqlDataSource>
+                
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+                    ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                    SelectCommand="SELECT Task.*, Project.* FROM Task INNER JOIN Project ON Task.ProjectId = Project.ProjectId WHERE ([EmployeeId] = @UserId)">
+                    <selectparameters>
+		                <asp:parameter name="UserId" type="String" />
+	                </selectparameters>
+                </asp:SqlDataSource>
+
+                <table>
+                    <tr>
+                        <td class="text1 col2">Task Name</td>
+                        <td class="text1 col2">Task Description</td>
+                        <td class="text1 col2">Project Name</td>
+                        <td class="text1 col2">Details</td>
+                    </tr>
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
+
+                        <itemTemplate>
+                        <tr>
+                            <td class="taskName"><%#Eval("taskName")%></td>
+                            <td class="taskDescription"><%#Eval("taskDescription")%></td>
+                            <td class="projectName"><a href="ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>"><%#Eval("ProjectName")%></a></td>
+                            <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
+                        </tr>
+                        
+                        </itemTemplate>
+                    </asp:Repeater>
+                </table>
 
                 <div class="clear"></div>
 					

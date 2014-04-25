@@ -39,7 +39,6 @@
                         </li>
                         <li><a href="#">Admin</a>
                             <ul class="left">
-                                <li><a href="../employee/Search.aspx">Search</a></li>
                                 <li><a href="../employer/AddNewEmployee.aspx">Register Staff</a></li>
                                 <li><a href="../employer/AddNewProject.aspx">Release Project</a></li>
                                 <li><a href="../employer/ViewAllEmployees.aspx">View All Staffs</a></li>
@@ -78,26 +77,24 @@
                         <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProjectId,TaskId" DataSourceID="SqlDataSource1">
                             <ItemTemplate>
                                 <section class="grid" id="grid">
-                                    <a href="./DeleteStaff.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+                                    <a href="#" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						                    <figcaption>
 						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
 						                    </figcaption>
 					                    </figure>
-                                        <span>delete</span>
+                                        <span>view</span>
                                         
 				                    </a>
                                 </section>
                                 <div class="projectDescription">
                                     <div class="text1 col2"><%#Eval("ProjectName")%></div>
+                                    <%#Eval("ProjectDescription")%>
+                                    <br /><br />
                                     <%#Eval("DepartmentName")%>
                                     <br /><br />
-                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%>
-                                    <br /><br />
-                                    <%#Eval("ProjectDescription")%>
-                                    <br />
-                                    
+                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br />
                                 </div>
                             </ItemTemplate>
                         </asp:FormView>
@@ -132,6 +129,7 @@
                         <td class="text1 col2">Details</td>
                     </tr>
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+
                         <itemTemplate>
                         <tr>
                             <td class="taskName"><%#Eval("taskName")%></td>

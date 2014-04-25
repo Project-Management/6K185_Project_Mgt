@@ -226,6 +226,11 @@ a.btn2 {
 	clear: both;
 }
 
+.pad {
+    padding-bottom:35px;
+    text-align:center;
+}
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
@@ -726,13 +731,28 @@ ul.list.l1+ul.list.l1 {
 
 
 .taskDescription {
-    padding: 10px 0px 0px 0px;
+    padding: 10px 5px 0px 0px;
     font-family:Arial;
     font-size:12pt;
-    width:600px;
+    width:500px;
     border-top:1px;
 }
 
+.projectName {
+    padding: 10px 5px 0px 0px;
+    font-family:Arial;
+    font-size:12pt;
+    width:150px;
+    border-top:1px;
+}
+
+.taskDetails {
+    padding: 10px 5px 0px 0px;
+    text-align:center;
+    font-family:Arial;
+    font-size:12pt;
+    border-top:1px;
+}
 
 #login {
     margin: 0px 200px;
@@ -778,6 +798,34 @@ ul.list.l1+ul.list.l1 {
 }
 
 #delete:hover{
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border:1px solid rgba(241,39,242,.75);
+}
+
+#details {
+    margin: 0px 200px;
+    padding-top: 10px;
+    padding-bottom: 80px;
+    height: auto;
+    background-color: #fff;
+    width: auto;
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border-radius: 5px 5px 5px 5px;
+}
+
+#details:hover{
     transition:border linear .2s,box-shadow linear .5s;
     -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
     -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
