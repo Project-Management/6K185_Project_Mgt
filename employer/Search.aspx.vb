@@ -11,7 +11,7 @@ Partial Class employer_ViewAllProjects
             Dim search As String = "SELECT DISTINCT ProjectId, ProjectName FROM Project Where (ProjectName Like '%" + tb_Search.Text.ToString() + "%')"
             SqlDataSource1.SelectCommand = search
             If tb_Search.Text = "" Then
-                Response.Redirect("~/employee/Project.aspx")
+                Response.Redirect("~/employer/ViewAllProjects.aspx")
             End If
         End If
     End Sub
@@ -20,7 +20,7 @@ Partial Class employer_ViewAllProjects
         Dim search As String = "SELECT DISTINCT ProjectId, ProjectName FROM Project Where (ProjectName Like '%" + tb_Search.Text.ToString() + "%')"
         SqlDataSource1.SelectCommand = search
         If tb_Search.Text = "" Then
-            Response.Redirect("~/employee/Project.aspx")
+            Response.Redirect("~/employer/ViewAllProjects.aspx")
         End If
     End Sub
 

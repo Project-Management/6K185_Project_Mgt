@@ -9,7 +9,7 @@ Partial Class employee_Project
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not IsPostBack Then
             Me.GetCustomersPageWise(1)
-
+            tb_Search.Focus()
         End If
     End Sub
 
@@ -99,4 +99,7 @@ Partial Class employee_Project
 
     End Sub
 
+    Protected Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
+        Response.Redirect("~/employee/Search.aspx?Search=" + tb_Search.Text)
+    End Sub
 End Class

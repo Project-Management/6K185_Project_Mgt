@@ -72,7 +72,8 @@
 			<div class="container_12">
 				<div class="grid_12">
 					<h2 class="mb0">Our Employees</h2>
-
+                     <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
+                     <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
 				</div>
 			</div>
 		</div>
