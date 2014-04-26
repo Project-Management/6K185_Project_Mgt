@@ -52,53 +52,6 @@ Partial Class employee_Project
         Me.GetCustomersPageWise(pageIndex)
     End Sub
 
-    Protected Sub Repeater1_ItemCommand(source As Object, e As RepeaterCommandEventArgs) Handles Repeater1.ItemCommand
-
-        If e.CommandName = "viewMore" Then
-
-            Dim UserName As String
-            UserName = User.Identity.Name
-
-            Dim UserId As String
-            Dim connectionString As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
-            Dim conn As New SqlConnection(connectionString)
-            conn.Open()
-            Dim comm As New SqlCommand("SELECT UserId FROM aspnet_Users WHERE (UserName = '" & UserName & "')", conn)
-            Dim reader As SqlDataReader = comm.ExecuteReader()
-            reader.Read()
-            UserId = Convert.ToString(reader("UserId"))
-            conn.Close()
-
-            Dim RoleId As String
-            Dim connectionString1 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
-            Dim conn1 As New SqlConnection(connectionString1)
-            conn1.Open()
-            Dim comm1 As New SqlCommand("SELECT RoleId FROM aspnet_UsersInRoles WHERE (UserId = '" & UserId & "')", conn1)
-            Dim reader1 As SqlDataReader = comm1.ExecuteReader()
-            reader1.Read()
-            RoleId = Convert.ToString(reader1("RoleId"))
-            conn1.Close()
-
-
-            'Dim ProjectId As String = CType(e.Item.FindControl("lbl"), Label).Text
-            Dim ProjectId As String = "13"
-
-
-            If RoleId = "82165500-c257-45fe-9c67-7eafdaa205f7" Then
-
-                Response.Redirect("~/employer/ProjectDetails.aspx?ProjectId=" & ProjectId)
-
-            ElseIf RoleId = "6d2e0197-a201-4e23-ac46-cb27cd70538c" Then
-
-                Response.Redirect("~/employee/ProjectDetails.aspx?ProjectId=" & ProjectId)
-
-            End If
-
-
-        End If
-
-    End Sub
-
     Protected Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
         Response.Redirect("~/employee/Search.aspx?Search=" + tb_Search.Text)
     End Sub

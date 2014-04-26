@@ -84,10 +84,10 @@
                 <br />
                 <section class="grid" id="grid">
 				<br /><br />
-                <asp:Repeater ID="Repeater1" runat="server" OnItemCommand ="Repeater1_ItemCommand">
+                <asp:Repeater ID="Repeater1" runat="server">
                     <itemTemplate>
 
-                        <asp:LinkButton ID="viewMore" commandName="viewMore" runat="server" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+                        <a href="./ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
 					        <figure>
 						        <svg viewBox="0 0 100 320" preserveAspectRatio="none"><path d="M 180,80 0,262 0,0 180,0 z"/></svg>
 						        <figcaption>
@@ -99,7 +99,7 @@
 					        </figure>
 					        <span>more</span>
                             <br /><br />
-                        </asp:LinkButton>
+                        </a>
                         
                     </itemTemplate>
                 </asp:Repeater>

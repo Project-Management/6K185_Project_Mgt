@@ -71,7 +71,7 @@ Partial Class employee_TaskDetails
                     Repeater1.Visible = False
                     btnUpload.Visible = False
                     btnDeny.Visible = False
-                    lblStatus.Text = "Nobody is currently working on this task."
+                    lblStatus.Text = "<strong>Nobody is currently working on this task.</strong>"
 
                 Else
 
@@ -120,7 +120,7 @@ Partial Class employee_TaskDetails
                             btnAbandon.Visible = False
                             Repeater1.Visible = True
                             btnUpload.Visible = False
-                            lblStatus.Text = "This task has been completed by " & Name & ". <br /><br /><strong>Please check the new uploaded file.</strong>"
+                            lblStatus.Text = "<strong>This task has been completed by " & Name & ". <br /><br />Please check the new uploaded file.</strong>"
 
                         ElseIf Reject = "Y" Then
 
@@ -131,7 +131,7 @@ Partial Class employee_TaskDetails
                             btnAbandon.Visible = False
                             Repeater1.Visible = True
                             btnUpload.Visible = False
-                            lblStatus.Text = "This task has taken by " & Name & ". <br /><br /><strong>No new files uploaded yet.</strong>"
+                            lblStatus.Text = "<strong>This task has taken by " & Name & ". <br /><br />No new files uploaded yet.</strong>"
 
                         End If
 
@@ -159,7 +159,7 @@ Partial Class employee_TaskDetails
                         Repeater1.Visible = True
                         btnUpload.Visible = False
                         btnDeny.Visible = False
-                        lblStatus.Text = "This task has been taken by " & Name & ". <br /><br /><strong>No files have been uploaded to this task yet.</strong>"
+                        lblStatus.Text = "<strong>This task has been taken by " & Name & ". <br /><br />No files have been uploaded to this task yet.</strong>"
 
                     End Try
 
@@ -227,7 +227,7 @@ Partial Class employee_TaskDetails
                         Repeater1.Visible = True
                         btnUpload.Visible = True
                         btnDeny.Visible = False
-                        lblStatus.Text = "Welcome back, " & Name & ".<br /><br /><strong>The file you uploaded has been denied by your manager.</strong>"
+                        lblStatus.Text = "<strong>Welcome back, " & Name & ".<br /><br />The file you uploaded has been denied by your manager.</strong>"
 
                     End If
 
@@ -240,7 +240,7 @@ Partial Class employee_TaskDetails
                     Repeater1.Visible = False
                     btnUpload.Visible = False
                     btnDeny.Visible = False
-                    lblStatus.Text = "This task is available for you, click the button below to take the task."
+                    lblStatus.Text = "<strong>This task is available for you. <br /><br />Click the button below to take the task.</strong>"
 
                 Else
 
@@ -265,12 +265,12 @@ Partial Class employee_TaskDetails
                     LastName = Convert.ToString(reader2("LastName"))
                     conn2.Close()
                     Dim Name As String = FirstName & " " & LastName
-                    lblStatus.Text = "This task was taken by " & Name & "."
+                    lblStatus.Text = "<strong>This task was taken by " & Name & ".</strong>"
 
 
                 End If
 
-                End If
+            End If
 
         Else
 
@@ -288,7 +288,7 @@ Partial Class employee_TaskDetails
             LastName = Convert.ToString(reader2("LastName"))
             conn2.Close()
             Dim Name As String = FirstName & " " & LastName
-            lblStatus.Text = "This task has been completed by " & Name & "."
+            lblStatus.Text = "<strong>This task has been completed by " & Name & ".</strong>"
             btnApprove.Visible = False
             btnDeny.Visible = False
             FileUpload1.Visible = False

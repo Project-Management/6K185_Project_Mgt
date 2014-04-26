@@ -126,16 +126,18 @@
                     <tr>
                         <td class="text1 col2">Task Name</td>
                         <td class="text1 col2">Task Description</td>
+                        <td class="text1 col2">Available</td>
                         <td class="text1 col2">Details</td>
                     </tr>
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
 
                         <itemTemplate>
-                        <tr>
-                            <td class="taskName"><%#Eval("taskName")%></td>
-                            <td class="taskDescription"><%#Eval("taskDescription")%></td>
-                            <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
-                        </tr>
+                            <tr>
+                                <td class="taskName"><%#Eval("taskName")%></td>
+                                <td class="taskDescription"><%#Eval("taskDescription")%></td>
+                                <td class="projectName">Yes</a></td>
+                                <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
+                            </tr>
                         
                         </itemTemplate>
                     </asp:Repeater>
