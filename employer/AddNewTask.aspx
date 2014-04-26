@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="DeleteTask.aspx.vb" Inherits="employer_DeleteTask" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="AddNewTask.aspx.vb" Inherits="employer_AddNewTask" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Message | Project Management System</title>
+		<title>Edit | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,13 +13,12 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-        <script src="../js/snap.svg-min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $().UItoTop({ easingType: 'easeOutQuart' });
-            })
+		<script>
+		    $(document).ready(function () {
+		        $().UItoTop({ easingType: 'easeOutQuart' });
+		    })
 		</script>
-
+		
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -70,52 +69,42 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-                <div id="delete">
-                    <div class="autobox">
-                        <h2>Delete Message</h2>
-                        <p>Are you sure you want to delete the following Task?</p>
+				
+                <div id="addInfo">
+                    <div class="addInfoBox">
+                        <table>
 
+                            <tr>
+                                <td align="right" class="addInfoText">Task Name:</td> <td align="left" class="auto-style3">
+                                    <asp:TextBox ID="tb_TaskName" runat="server" Columns="50" CssClass="addInfoTextbox"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tb_TaskName" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
-                            SelectCommand="SELECT * FROM Task WHERE (TaskId = @TaskId)">
-                            <selectparameters>
-		                        <asp:QueryStringParameter Name="TaskId" QueryStringField="TaskId" Type="String" />
-	                        </selectparameters>
-                        </asp:SqlDataSource>
+                            <tr>
+                                <td align="right" class="addInfoText"></td> <td align="left" class="auto-style3">
+                                    <asp:TextBox ID="tb_Description" runat="server" Columns="50" CssClass="addInfoDescriptionTextbox" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tb_Description" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
 
+                            <tr>
+                                <td align="left"><asp:LinkButton ID="Delete" runat="server" CssClass="btn" Visible="false">Delete</asp:LinkButton></td>
+                                <td align="center">
+                                    <asp:LinkButton ID="Cancel" runat="server" CssClass="btn">Cancel</asp:LinkButton>
+                                    <asp:LinkButton ID="Add" runat="server" CssClass="btn">Add</asp:LinkButton>
 
+                                </td>
+                            </tr>
+                        </table>
 
-                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
-                            <itemTemplate>
-
-                                <section class="grid" id="grid">
-
-                                    <a href="EditTask.aspx?TaskId=<%#Eval("TaskId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
-
-					                    <figure>
-						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
-						                    <figcaption>
-						                    <div class="projectTitle"><%#Eval("TaskName")%></div>
-						                    </figcaption>
-					                    </figure>
-                                        <span>view</span>
-                                        
-				                    </a>
-                                </section>
-
-                            </itemTemplate>
-                        </asp:Repeater>
-                        <br />
-                        <div class="deleteBtn">
-                            <asp:LinkButton ID="No" runat="server" CssClass="btn">No</asp:LinkButton>
-                            <asp:LinkButton ID="Yes" runat="server" CssClass="btn">Yes</asp:LinkButton>
-                        </div>
-				    </div>
-
-			    </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+					
+			</div>
 			
-		    </div>
-        </div>
+		</div>
 <!--==============================footer=================================-->
 		<footer>
 			<div class="container_12">
@@ -155,28 +144,9 @@
 		            $('.content').css('background-color', bgColor);
 		        });
 		    });
-		    (function () {
-		        function init() {
-		            var speed = 250,
-                    easing = mina.easeinout;
-		            [].slice.call(document.querySelectorAll('#grid > a')).forEach(function (el) {
-		                var s = Snap(el.querySelector('svg')), path = s.select('path'),
-                            pathConfig = {
-                                from: path.attr('d'),
-                                to: el.getAttribute('data-path-hover')
-                            };
-		                el.addEventListener('mouseenter', function () {
-		                    path.animate({ 'path': pathConfig.to }, speed, easing);
-		                });
-		                el.addEventListener('mouseleave', function () {
-		                    path.animate({ 'path': pathConfig.from }, speed, easing);
-		                });
-		            });
-		        }
-		        init();
-		    })();
 		</script>
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     </form>
 </body>
 </html>
+

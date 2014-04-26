@@ -98,6 +98,7 @@
                                     <%#Eval("ProjectDescription")%>
                                     <br />
                                     <a href="EditProject.aspx?ProjectId=<%#Eval("ProjectId")%>"  class="btn" style="cursor:pointer" >Edit Project</a>
+                                    <a href="AddNewTask.aspx?ProjectId=<%#Eval("ProjectId")%>"  class="btn" style="cursor:pointer" >Add Task</a>
                                 </div>
                             </ItemTemplate>
                         </asp:FormView>
