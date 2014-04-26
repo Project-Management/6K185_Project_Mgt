@@ -99,6 +99,7 @@
 
                         </asp:Repeater>
                         <asp:LinkButton ID="btnEdit" runat="server" CssClass="btn">Edit</asp:LinkButton>
+                        <asp:LinkButton ID="btnAssign" runat="server" CssClass="btn">Assign</asp:LinkButton>
                         <asp:LinkButton ID="btnTake" runat="server" CssClass="btn">Take</asp:LinkButton>
                         <asp:LinkButton ID="btnDeny" runat="server" CssClass="btn">Deny</asp:LinkButton>
                         <asp:LinkButton ID="btnApprove" runat="server" CssClass="btn">Approve</asp:LinkButton>
@@ -107,7 +108,6 @@
                         <br />
                         <asp:LinkButton ID="btnUpload" runat="server" CssClass="btn">Upload</asp:LinkButton>
                         <asp:LinkButton ID="btnAbandon" runat="server" CssClass="btn">Abandon</asp:LinkButton>
-                        <asp:LinkButton ID="btnAssign" runat="server" CssClass="btn">Assign</asp:LinkButton>
 				    </div>
 
 			    </div>

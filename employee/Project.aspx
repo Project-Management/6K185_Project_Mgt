@@ -71,17 +71,19 @@
 		<div class="content cont2">
 			<div class="container_12">
 				<div class="grid_12">
-					<h2 class="mb0">Our Projects</h2>
+					<h2 class="mb0">Our Projects</h2><br /><br />
 
 				</div>
 			</div>
 		</div>
 		<div class="gray_block gb1">
+            
 			<div class="container_12">
                 <br />
-                <asp:TextBox ID="tb_Search" CssClass="addInfoTextbox" runat="server"></asp:TextBox>
-                <asp:LinkButton ID="btn_Search" CssClass="btn" runat="server">Search</asp:LinkButton>
-                <br />
+                <div class="field" id="searchform">
+                    <asp:TextBox ID="tb_Search" runat="server" placeholder="Search by Project Name"></asp:TextBox>
+                    <asp:Button ID="btn_Search" cssClass="searchBtn" runat="server" text="Search" style="cursor:pointer"/>
+                </div>
                 <section class="grid" id="grid">
 				<br /><br />
                 <asp:Repeater ID="Repeater1" runat="server">

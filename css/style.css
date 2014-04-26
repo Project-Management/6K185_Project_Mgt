@@ -608,6 +608,13 @@ ul.list.l1+ul.list.l1 {
 .addInfoBox {
     margin:0 auto;
     width:520px;
+
+}
+
+.addTaskBox {
+    margin:0 auto;
+    width:454px;
+
 }
 
 .addInfoTextbox {
@@ -723,8 +730,6 @@ ul.list.l1+ul.list.l1 {
 
 .taskName {
     padding: 10px 0px 0px 0px;
-    font-family:Arial;
-    font-size:12pt;
     width:200px;
     border-top:1px;
 }
@@ -732,26 +737,27 @@ ul.list.l1+ul.list.l1 {
 
 .taskDescription {
     padding: 10px 5px 0px 0px;
-    font-family:Arial;
-    font-size:12pt;
     width:500px;
     border-top:1px;
 }
 
 .projectName {
     padding: 10px 5px 0px 0px;
-    font-family:Arial;
-    font-size:12pt;
     width:150px;
     border-top:1px;
+}
+
+.projectAvailability {
+    padding: 10px 5px 0px 25px;
+    border-top:1px;
+    width:150px;
 }
 
 .taskDetails {
     padding: 10px 5px 0px 0px;
     text-align:center;
-    font-family:Arial;
-    font-size:12pt;
     border-top:1px;
+    width:50px;
 }
 
 #login {
@@ -798,6 +804,33 @@ ul.list.l1+ul.list.l1 {
 }
 
 #delete:hover{
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border:1px solid rgba(241,39,242,.75);
+}
+
+#addTask {
+    margin: 0px 200px;
+    padding-top: 10px;
+    height: 550px;
+    background-color: #fff;
+    width: auto;
+    transition:border linear .2s,box-shadow linear .5s;
+    -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
+    -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
+    outline:none;border-color:rgba(241,39,242,.75);
+    box-shadow:0 0 8px rgba(241,39,232,.5);
+    -moz-box-shadow:0 0 8px rgba(241,39,232,.5);
+    -webkit-box-shadow:0 0 8px rgba(241,39,232,3);
+    border-radius: 5px 5px 5px 5px;
+}
+
+#addTask:hover{
     transition:border linear .2s,box-shadow linear .5s;
     -moz-transition:border linear .2s,-moz-box-shadow linear .5s;
     -webkit-transition:border linear .2s,-webkit-box-shadow linear .5s;
@@ -935,31 +968,57 @@ a.button {
         -webkit-box-shadow: 0 0 8px rgba(241,39,232,3);
     }
 
-
-.searchbox {
-    border:1px solid #8c8989;
-    padding-left:8px;
-    border-radius: 5px 5px 5px 5px;
+.searchBtn {
+    display: inline-block;
+    font: bold 16px 'Open Sans Condensed', sans-serif;
+    border: 0.2em solid #a2cac2;
+    padding: 4px 30px 4px 15px;
+    background-color: #a2cac2;
+    color: #fff;
+    -webkit-border-top-right-radius: 10em;
+    -webkit-border-bottom-right-radius: 10em;
+    -moz-border-radius-topright: 10em;
+    -moz-border-radius-bottomright: 10em;
+    border-top-right-radius: 10em;
+    border-bottom-right-radius: 10em;
+    margin: 0px;
 }
 
-    .searchbox:hover {
-        border: 1px solid #c3dcd7;
+    .searchBtn:hover {
     }
 
-    .searchbox:active {
-        border: 1px solid #c3dcd7;
+.field {
+    border: 0.1em solid #a2cac2;
+    display: flex;
+    position: relative;
+    margin: 2em auto;
+    width: 70%;
+    flex-direction: row;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+}
+
+    .field > input[type=text],
+    .field > button {
+        display: block;
+        font: 14px 'Open Sans Condensed', sans-serif;
+        margin: 0px;
     }
 
-    .searchbox:focus {
-        transition: border linear .2s,box-shadow linear .5s;
-        -moz-transition: border linear .2s,-moz-box-shadow linear .5s;
-        -webkit-transition: border linear .2s,-webkit-box-shadow linear .5s;
-        outline: none;
-        border-color: rgba(241,39,242,.75);
-        box-shadow: 0 0 8px rgba(241,39,232,.5);
-        -moz-box-shadow: 0 0 8px rgba(241,39,232,.5);
-        -webkit-box-shadow: 0 0 8px rgba(241,39,232,3);
+    .field > input[type=text] {
+        flex: 1;
+        padding: 0.6em;
+        padding-left: 1.2em;
+        border: 0.2em solid #a2cac2;
+        -webkit-border-top-left-radius: 10em;
+        -webkit-border-bottom-left-radius: 10em;
+        -moz-border-radius-topleft: 10em;
+        -moz-border-radius-bottomleft: 10em;
+        border-top-left-radius: 10em;
+        border-bottom-left-radius: 10em;
     }
+
 
 
 .projectDescription {
@@ -1347,6 +1406,4 @@ footer a:hover {
 .grid svg path {
 	fill: #fff;
 }
-
-/* Hover effects */
 

@@ -70,8 +70,9 @@
 		<div class="content cont2">
 			<div class="container_12">
 				
-                <div id="addInfo">
-                    <div class="addInfoBox">
+                <div id="addTask">
+                    <div class="addTaskBox">
+                        <h2>Add new task</h2>
                         <table>
 
                             <tr>
@@ -82,16 +83,16 @@
                             </tr>
 
                             <tr>
-                                <td align="right" class="addInfoText"></td> <td align="left" class="auto-style3">
+                                <td align="right" class="addInfoText">Task Description:</td> <td align="left" class="auto-style3">
                                     <asp:TextBox ID="tb_Description" runat="server" Columns="50" CssClass="addInfoDescriptionTextbox" TextMode="MultiLine"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tb_Description" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td align="left"><asp:LinkButton ID="Delete" runat="server" CssClass="btn" Visible="false">Delete</asp:LinkButton></td>
+                                <td align="left"></td>
                                 <td align="center">
-                                    <asp:LinkButton ID="Cancel" runat="server" CssClass="btn">Cancel</asp:LinkButton>
+                                    <asp:LinkButton ID="Cancel" runat="server" CssClass="btn" CausesValidation="False">Cancel</asp:LinkButton>
                                     <asp:LinkButton ID="Add" runat="server" CssClass="btn">Add</asp:LinkButton>
 
                                 </td>

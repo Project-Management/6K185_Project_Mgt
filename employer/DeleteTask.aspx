@@ -90,7 +90,7 @@
 
                                 <section class="grid" id="grid">
 
-                                    <a href="EditTask.aspx?TaskId=<%#Eval("TaskId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+                                    <a href="~/Employee/TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
 
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>

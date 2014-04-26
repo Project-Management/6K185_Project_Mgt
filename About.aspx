@@ -121,7 +121,7 @@
 					<div class="block3 bd1">
 						<img src="images/employee/123456789.jpg" alt="" />
 						<div class="text2"><a href="http://www.haoranwang.net" target="_blank">Haoran Wang</a></div>
-						Web Developer & Data Analyst
+						
 					</div>
 				</div>
 				<div class="grid_3">

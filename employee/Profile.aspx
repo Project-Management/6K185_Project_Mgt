@@ -140,7 +140,8 @@
 		</div>
 		<div class="gray_block gb1">
 			<div class="container_12">
-                <h2 class="mb0">Task in Progress</h2>
+                <h2 class="mb0">
+                    <asp:Label ID="lblTitle" runat="server"></asp:Label></h2>
                 <br /><br />
 
 
@@ -160,26 +161,27 @@
 	                </selectparameters>
                 </asp:SqlDataSource>
 
-                <table>
-                    <tr>
-                        <td class="text1 col2">Task Name</td>
-                        <td class="text1 col2">Task Description</td>
-                        <td class="text1 col2">Project Name</td>
-                        <td class="text1 col2">Details</td>
-                    </tr>
+                <asp:Table ID="Table1" runat="server">
+                    <asp:tablerow>
+                        <asp:tablecell class="text1 col2 taskName">Task Name</asp:tablecell>
+                        <asp:tablecell class="text1 col2 taskDescription">Task Description</asp:tablecell>
+                        <asp:tablecell class="text1 col2 projectName">Project Name</asp:tablecell>
+                        <asp:tablecell class="text1 col2 taskDetails">Details</asp:tablecell>
+                    </asp:tablerow>
+                    </asp:Table>
                     <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
 
                         <itemTemplate>
-                        <tr>
-                            <td class="taskName"><%#Eval("taskName")%></td>
-                            <td class="taskDescription"><%#Eval("taskDescription")%></td>
-                            <td class="projectName"><a href="ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>"><%#Eval("ProjectName")%></a></td>
-                            <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
-                        </tr>
-                        
+                        <asp:Table ID="Table2" runat="server">
+                            <asp:tablerow>
+                                <asp:tablecell class="taskName"><%#Eval("taskName")%></asp:tablecell>
+                                <asp:tablecell class="taskDescription"><%#Eval("taskDescription")%></asp:tablecell>
+                                <asp:tablecell class="projectName"><a href="ProjectDetails.aspx?ProjectId=<%#Eval("ProjectId")%>"><%#Eval("ProjectName")%></a></asp:tablecell>
+                                <asp:tablecell class="taskDetails"><a href="../Employee/TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></asp:tablecell>
+                            </asp:tablerow>
+                        </asp:Table>
                         </itemTemplate>
                     </asp:Repeater>
-                </table>
 
                 <div class="clear"></div>
 					

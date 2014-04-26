@@ -101,9 +101,12 @@
                                     <a href="AddNewTask.aspx?ProjectId=<%#Eval("ProjectId")%>"  class="btn" style="cursor:pointer" >Add Task</a>
                                 </div>
                             </ItemTemplate>
+                            
                         </asp:FormView>
-                    
-                    <asp:label id="lbl_finished" runat="server" cssclass="text1 col2"></asp:label>
+                    <span style="position:absolute; top:550px; left:220px;">
+                        <asp:label id="lbl_finished" runat="server" cssclass="text1 col2"></asp:label>
+                    </span>
+                    <br />
 				</div>
 			</div>
 		</div>

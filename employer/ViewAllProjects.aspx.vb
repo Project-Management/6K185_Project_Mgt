@@ -55,5 +55,4 @@ Partial Class employer_ViewAllProjects
     Protected Sub btn_Search_Click(sender As Object, e As EventArgs) Handles btn_Search.Click
         Response.Redirect("~/employer/Search.aspx?Search=" + tb_Search.Text)
     End Sub
-
 End Class

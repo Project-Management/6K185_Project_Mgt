@@ -75,14 +75,14 @@
                         <table>
 
                             <tr>
-                                <td align="right" class="addInfoText">Project Name:</td> <td align="left" class="auto-style3">
+                                <td align="right" class="addInfoText">Task Name:</td> <td align="left" class="auto-style3">
                                     <asp:TextBox ID="tb_TaskName" runat="server" Columns="50" CssClass="addInfoTextbox"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tb_TaskName" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td align="right" class="addInfoText">Project Description:</td> <td align="left" class="auto-style3">
+                                <td align="right" class="addInfoText">Task Description:</td> <td align="left" class="auto-style3">
                                     <asp:TextBox ID="tb_Description" runat="server" Columns="50" CssClass="addInfoDescriptionTextbox" TextMode="MultiLine"></asp:TextBox>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tb_Description" ErrorMessage="*"></asp:RequiredFieldValidator>
                                 </td>
