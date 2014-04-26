@@ -84,7 +84,7 @@
 						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
 						                    </figcaption>
 					                    </figure>
-                                        <span>delete</span>
+                                        <span>Delete</span>
                                         
 				                    </a>
                                     
@@ -102,7 +102,7 @@
                             </ItemTemplate>
                         </asp:FormView>
                     
-
+                    <asp:label id="lbl_finished" runat="server" cssclass="text1 col2"></asp:label>
 				</div>
 			</div>
 		</div>

@@ -30,7 +30,7 @@ Partial Class employer_Delete
             myConnection.Close()
         End Using
 
-        Response.Redirect("./ViewAllEmployees.aspx?UserId=" & UserId)
+        Response.Redirect("./ViewAllEmployees.aspx")
 
     End Sub
 End Class

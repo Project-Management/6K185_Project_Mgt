@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ProjectDetails.aspx.vb" Inherits="employee_ProjectDetails" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="DeleteTask.aspx.vb" Inherits="employer_DeleteTask" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Profile | Project Management System</title>
+		<title>Message | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,13 +13,13 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-		<script src="../js/snap.svg-min.js"></script>
-		<script>
-		    $(document).ready(function () {
-		        $().UItoTop({ easingType: 'easeOutQuart' });
-		    })
+        <script src="../js/snap.svg-min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $().UItoTop({ easingType: 'easeOutQuart' });
+            })
 		</script>
-		
+
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -70,83 +70,52 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-				<div class="grid_12">
-					<h2 class="mb0">Our Projects</h2>
-                    <br /><br />
-                    
-                        <asp:FormView ID="FormView1" runat="server" DataKeyNames="ProjectId,TaskId" DataSourceID="SqlDataSource1">
-                            <ItemTemplate>
+                <div id="delete">
+                    <div class="autobox">
+                        <h2>Delete Message</h2>
+                        <p>Are you sure you want to delete the following Task?</p>
+
+
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                            SelectCommand="SELECT * FROM Task WHERE (TaskId = @TaskId)">
+                            <selectparameters>
+		                        <asp:QueryStringParameter Name="TaskId" QueryStringField="TaskId" Type="String" />
+	                        </selectparameters>
+                        </asp:SqlDataSource>
+
+
+
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                            <itemTemplate>
+
                                 <section class="grid" id="grid">
-                                    <a href="#" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+
+                                    <a href="~/Employee/TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>" data-path-hover="m 180,150.57627 -180,0 L 0,0 180,0 z">
+
 					                    <figure>
 						                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,262 0,0 180,0 z"/></svg>
 						                    <figcaption>
-						                    <div class="projectTitle"><%#Eval("ProjectName")%></div>
+						                    <div class="projectTitle"><%#Eval("TaskName")%></div>
 						                    </figcaption>
 					                    </figure>
                                         <span>view</span>
                                         
 				                    </a>
                                 </section>
-                                <div class="projectDescription">
-                                    <div class="text1 col2"><%#Eval("ProjectName")%></div>
-                                    <%#Eval("ProjectDescription")%>
-                                    <br /><br />
-                                    <%#Eval("DepartmentName")%>
-                                    <br /><br />
-                                    Start Date:&nbsp;<%#Eval("StartDate")%><br />End Date:&nbsp;<%#Eval("EndDate")%><br />
-                                </div>
-                            </ItemTemplate>
-                        </asp:FormView>
-                    
-                    <asp:label id="lbl_finished" runat="server" cssclass="text1 col2"></asp:label>
-				</div>
-			</div>
-		</div>
-		<div class="gray_block gb1">
-			<div class="container_12">
-                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
-                    SelectCommand="SELECT Project.*, Department.*, Task.* FROM Project INNER JOIN Task ON Project.ProjectId = Task.ProjectId INNER JOIN Department ON Project.DepartmentId = Department.DepartmentId WHERE Project.ProjectId = @ProjectId">
-                    <SelectParameters>
-                        <asp:QueryStringParameter Name="ProjectId" QueryStringField="ProjectId" Type="Int64" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
 
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
-                    ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
-                    SelectCommand="SELECT * FROM [Task] WHERE ([ProjectId] = @ProjectId)">
-                    <SelectParameters>
-                        <asp:QueryStringParameter Name="ProjectId" QueryStringField="ProjectId" Type="Decimal" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
+                            </itemTemplate>
+                        </asp:Repeater>
+                        <br />
+                        <div class="deleteBtn">
+                            <asp:LinkButton ID="No" runat="server" CssClass="btn">No</asp:LinkButton>
+                            <asp:LinkButton ID="Yes" runat="server" CssClass="btn">Yes</asp:LinkButton>
+                        </div>
+				    </div>
 
-                <h2 class="mb0">Tasks</h2>
-                <br /><br />
-                <table>
-                    <tr>
-                        <td class="text1 col2">Task Name</td>
-                        <td class="text1 col2">Task Description</td>
-                        <td class="text1 col2">Available</td>
-                        <td class="text1 col2">Details</td>
-                    </tr>
-                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource2">
-
-                        <itemTemplate>
-                            <tr>
-                                <td class="taskName"><%#Eval("taskName")%></td>
-                                <td class="taskDescription"><%#Eval("taskDescription")%></td>
-                                <td class="projectName"><%# If(Eval("EmployeeId").ToString() = "", "Yes", "No")%></a></td>
-                                <td class="taskDetails"><a href="TaskDetails.aspx?TaskId=<%#Eval("TaskId")%>">View</a></td>
-                            </tr>
-                        
-                        </itemTemplate>
-                    </asp:Repeater>
-                </table>
-                <div class="clear"></div>
-					
-			</div>
+			    </div>
 			
-		</div>
+		    </div>
+        </div>
 <!--==============================footer=================================-->
 		<footer>
 			<div class="container_12">
@@ -159,7 +128,6 @@
 					<div class="clear"></div>
 					<div class="copy">
 						Copyright &copy; 2014 CapStone Project - the University of Iowa
-					
 					</div>
 				</div>
 			</div>

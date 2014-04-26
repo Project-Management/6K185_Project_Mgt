@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="TaskDetails.aspx.vb" Inherits="employee_TaskDetails" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="EditTask.aspx.vb" Inherits="employer_EditTask" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Task Details | Project Management System</title>
+		<title>Edit | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,13 +13,12 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-        <script src="../js/snap.svg-min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $().UItoTop({ easingType: 'easeOutQuart' });
-            })
+		<script>
+		    $(document).ready(function () {
+		        $().UItoTop({ easingType: 'easeOutQuart' });
+		    })
 		</script>
-
+		
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -70,50 +69,41 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-                <div id="details">
-                    <div class="autobox">
+				
+                <div id="addInfo">
+                    <div class="addInfoBox">
+                        <table>
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" SelectCommand="SELECT * FROM [TaskFiles] WHERE ([TaskId] = @TaskId)">
-                            <SelectParameters>
-                                <asp:QueryStringParameter Name="TaskId" QueryStringField="TaskId" Type="Decimal" />
-                            </SelectParameters>
-                        </asp:SqlDataSource>
+                            <tr>
+                                <td align="right" class="addInfoText">Project Name:</td> <td align="left" class="auto-style3">
+                                    <asp:TextBox ID="tb_TaskName" runat="server" Columns="50" CssClass="addInfoTextbox"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tb_TaskName" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
 
-                        <h2><asp:LinkButton ID="lblProjectName" runat="server"></asp:LinkButton></h2>
+                            <tr>
+                                <td align="right" class="addInfoText">Project Description:</td> <td align="left" class="auto-style3">
+                                    <asp:TextBox ID="tb_Description" runat="server" Columns="50" CssClass="addInfoDescriptionTextbox" TextMode="MultiLine"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="tb_Description" ErrorMessage="*"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
 
-                        <div class="text1 col2"><asp:Label ID="lblTaskName" runat="server"></asp:Label></div>
-                        <asp:Label ID="lblTaskDescription" runat="server"></asp:Label>
-                        <br /><br />
-                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                        <br />
+                            <tr>
+                                <td align="left"><asp:LinkButton ID="Delete" runat="server" CssClass="btn">Delete</asp:LinkButton></td>
+                                <td align="right">
+                                    <asp:LinkButton ID="Cancel" runat="server" CssClass="btn">Cancel</asp:LinkButton>
+                                    <asp:LinkButton ID="Update" runat="server" CssClass="btn">Update</asp:LinkButton>
+                                </td>
+                            </tr>
+                        </table>
 
-                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" >
-
-                            <itemTemplate>
-
-                                <br />
-                                <strong>Files: </strong><a href="../taskFiles/<%#Eval("EmployeeId")%>/<%#Eval("TaskFiles")%>"><%#Eval("TaskFiles")%></a>
-                                <br />
-
-                            </itemTemplate>
-
-                        </asp:Repeater>
-                        <asp:LinkButton ID="btnEdit" runat="server" CssClass="btn">Edit</asp:LinkButton>
-                        <asp:LinkButton ID="btnTake" runat="server" CssClass="btn">Take</asp:LinkButton>
-                        <asp:LinkButton ID="btnDeny" runat="server" CssClass="btn">Deny</asp:LinkButton>
-                        <asp:LinkButton ID="btnApprove" runat="server" CssClass="btn">Approve</asp:LinkButton>
-                        <br />
-                        <asp:FileUpload ID="FileUpload1" runat="server" />
-                        <br />
-                        <asp:LinkButton ID="btnUpload" runat="server" CssClass="btn">Upload</asp:LinkButton>
-                        <asp:LinkButton ID="btnAbandon" runat="server" CssClass="btn">Abandon</asp:LinkButton>
-                        <asp:LinkButton ID="btnAssign" runat="server" CssClass="btn">Assign</asp:LinkButton>
-				    </div>
-
-			    </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+					
+			</div>
 			
-		    </div>
-        </div>
+		</div>
 <!--==============================footer=================================-->
 		<footer>
 			<div class="container_12">
@@ -153,28 +143,9 @@
 		            $('.content').css('background-color', bgColor);
 		        });
 		    });
-		    (function () {
-		        function init() {
-		            var speed = 250,
-                    easing = mina.easeinout;
-		            [].slice.call(document.querySelectorAll('#grid > a')).forEach(function (el) {
-		                var s = Snap(el.querySelector('svg')), path = s.select('path'),
-                            pathConfig = {
-                                from: path.attr('d'),
-                                to: el.getAttribute('data-path-hover')
-                            };
-		                el.addEventListener('mouseenter', function () {
-		                    path.animate({ 'path': pathConfig.to }, speed, easing);
-		                });
-		                el.addEventListener('mouseleave', function () {
-		                    path.animate({ 'path': pathConfig.from }, speed, easing);
-		                });
-		            });
-		        }
-		        init();
-		    })();
 		</script>
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     </form>
 </body>
 </html>
+

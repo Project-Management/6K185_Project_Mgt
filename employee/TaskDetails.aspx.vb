@@ -63,7 +63,7 @@ Partial Class employee_TaskDetails
         If Finished = 0 Then
 
             If UserId = "71e09b16-bfe6-4ffe-8676-06978100992d" Or UserId = "34be58a1-2261-43be-b4da-a6a090b6a85b" Then
-
+                btnEdit.Visible = True
                 If EmployeeId = "" Then
 
                     btnApprove.Visible = False
@@ -171,6 +171,7 @@ Partial Class employee_TaskDetails
                 End If
 
             Else
+                btnEdit.Visible = False
 
                 If EmployeeId = UserId Then
 
@@ -307,7 +308,7 @@ Partial Class employee_TaskDetails
             Repeater1.Visible = True
             btnUpload.Visible = False
             btnAssign.Visible = False
-
+            btnEdit.Visible = False
         End If
 
 
@@ -501,5 +502,12 @@ Partial Class employee_TaskDetails
         TaskId = Request.QueryString("TaskId")
 
         Response.Redirect("~/employer/CheckEmployee.aspx?TaskId=" & TaskId)
+    End Sub
+
+    Protected Sub btnEdit_Click(sender As Object, e As EventArgs) Handles btnEdit.Click
+        Dim TaskId As String
+        TaskId = Request.QueryString("TaskId")
+
+        Response.Redirect("~/employer/EditTask.aspx?TaskId=" & TaskId)
     End Sub
 End Class

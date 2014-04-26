@@ -2,25 +2,25 @@
 Imports System.Data
 Imports System.Data.Sql
 
-Partial Class employer_Delete
+Partial Class employer_DeleteTask
     Inherits System.Web.UI.Page
 
     Protected Sub No_Click(sender As Object, e As EventArgs) Handles No.Click
 
-        Dim ProjectId As String
-        ProjectId = Request.QueryString("ProjectId")
+        Dim TaskId As String
+        TaskId = Request.QueryString("TaskId")
 
-        Response.Redirect("./ProjectDetails.aspx?ProjectId=" & ProjectId)
+        Response.Redirect("~/Employee/TaskDetails.aspx?TaskId=" & TaskId)
 
     End Sub
 
     Protected Sub Yes_Click(sender As Object, e As EventArgs) Handles Yes.Click
 
-        Dim ProjectId As String
-        ProjectId = Request.QueryString("ProjectId")
+        Dim TaskId As String
+        TaskId = Request.QueryString("TaskId")
 
         Dim connectionstring As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
-        Dim updateSql As String = "DELETE FROM Project WHERE ProjectId = '" & ProjectId & "'"
+        Dim updateSql As String = "DELETE FROM Task WHERE TaskId = '" & TaskId & "'"
 
         Using myConnection As New SqlConnection(connectionstring)
             myConnection.Open()
@@ -33,4 +33,5 @@ Partial Class employer_Delete
         Response.Redirect("./ViewAllProjects.aspx")
 
     End Sub
+
 End Class
