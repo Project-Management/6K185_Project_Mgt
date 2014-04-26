@@ -58,6 +58,8 @@ Partial Class employee_TaskDetails
         conn1.Close()
         lblProjectName.Text = ProjectName
 
+
+
         If Finished = 0 Then
 
             If UserId = "71e09b16-bfe6-4ffe-8676-06978100992d" Or UserId = "34be58a1-2261-43be-b4da-a6a090b6a85b" Then
@@ -72,7 +74,7 @@ Partial Class employee_TaskDetails
                     btnUpload.Visible = False
                     btnDeny.Visible = False
                     lblStatus.Text = "<strong>Nobody is currently working on this task.</strong>"
-
+                    btnAssign.Visible = True
                 Else
 
                     Try
@@ -121,6 +123,7 @@ Partial Class employee_TaskDetails
                             Repeater1.Visible = True
                             btnUpload.Visible = False
                             lblStatus.Text = "<strong>This task has been completed by " & Name & ". <br /><br />Please check the new uploaded file.</strong>"
+                            btnAssign.Visible = False
 
                         ElseIf Reject = "Y" Then
 
@@ -132,6 +135,7 @@ Partial Class employee_TaskDetails
                             Repeater1.Visible = True
                             btnUpload.Visible = False
                             lblStatus.Text = "<strong>This task has taken by " & Name & ". <br /><br />No new files uploaded yet.</strong>"
+                            btnAssign.Visible = False
 
                         End If
 
@@ -160,6 +164,7 @@ Partial Class employee_TaskDetails
                         btnUpload.Visible = False
                         btnDeny.Visible = False
                         lblStatus.Text = "<strong>This task has been taken by " & Name & ". <br /><br />No files have been uploaded to this task yet.</strong>"
+                        btnAssign.Visible = False
 
                     End Try
 
@@ -203,6 +208,7 @@ Partial Class employee_TaskDetails
                         btnUpload.Visible = True
                         btnDeny.Visible = False
                         lblStatus.Text = "Welcome back, " & Name & "."
+                        btnAssign.Visible = False
 
                     ElseIf Reject = "Y" Then
 
@@ -228,6 +234,7 @@ Partial Class employee_TaskDetails
                         btnUpload.Visible = True
                         btnDeny.Visible = False
                         lblStatus.Text = "<strong>Welcome back, " & Name & ".<br /><br />The file you uploaded has been denied by your manager.</strong>"
+                        btnAssign.Visible = False
 
                     End If
 
@@ -241,6 +248,7 @@ Partial Class employee_TaskDetails
                     btnUpload.Visible = False
                     btnDeny.Visible = False
                     lblStatus.Text = "<strong>This task is available for you. <br /><br />Click the button below to take the task.</strong>"
+                    btnAssign.Visible = False
 
                 Else
 
@@ -251,6 +259,8 @@ Partial Class employee_TaskDetails
                     Repeater1.Visible = False
                     btnUpload.Visible = False
                     btnDeny.Visible = False
+                    btnAssign.Visible = False
+
                     Dim connectionStr2 As String = ConfigurationManager.ConnectionStrings("cs_PMS").ConnectionString
                     Dim conn2 As New SqlConnection(connectionStr2)
                     conn2.Open()
@@ -296,7 +306,7 @@ Partial Class employee_TaskDetails
             btnAbandon.Visible = False
             Repeater1.Visible = True
             btnUpload.Visible = False
-
+            btnAssign.Visible = False
 
         End If
 
@@ -484,5 +494,12 @@ Partial Class employee_TaskDetails
 
         Response.Redirect("./TaskDetails.aspx?TaskId=" & TaskId)
 
+    End Sub
+
+    Protected Sub btnAssign_Click(sender As Object, e As EventArgs) Handles btnAssign.Click
+        Dim TaskId As String
+        TaskId = Request.QueryString("TaskId")
+
+        Response.Redirect("~/employer/CheckEmployee.aspx?TaskId=" & TaskId)
     End Sub
 End Class

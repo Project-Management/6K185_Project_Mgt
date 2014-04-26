@@ -1,5 +1,5 @@
 ﻿
-Partial Class employer_ViewAllEmployees
+Partial Class employer_CheckEmployee
     Inherits System.Web.UI.Page
 
     Protected Sub tb_Search_TextChanged(sender As Object, e As EventArgs) Handles tb_Search.TextChanged
@@ -12,6 +12,7 @@ Partial Class employer_ViewAllEmployees
             tb_Search.Text = Request.QueryString("Search")
             Dim search As String = "SELECT * FROM StaffInfo Where (FirstName Like '%" + tb_Search.Text.ToString() + "%') OR (MiddleName Like '%" + tb_Search.Text.ToString() + "%') OR (LastName Like '%" + tb_Search.Text.ToString() + "%')"
             SqlDataSource1.SelectCommand = search
+            Session("field1") = Request.QueryString("TaskId")
         End If
     End Sub
 

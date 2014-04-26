@@ -1,11 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="TaskDetails.aspx.vb" Inherits="employee_TaskDetails" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="AssignTask.aspx.vb" Inherits="employer_AssignTask" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <meta charset="utf-8"/>
-		<title>Task Details | Project Management System</title>
+		<title>Message | Project Management System</title>
 		<link rel="icon" href="../images/icon.ico"/>
 		<link rel="shortcut icon" href="../images/icon.ico"/>
 		<link rel="stylesheet" href="../css/style.css"/>
@@ -13,13 +13,11 @@
 		<script src="../js/jquery-migrate-1.1.1.js"></script>
 		<script src="../js/jquery.ui.totop.js"></script>
 		<script src="../js/jquery.easing.1.3.js"></script>
-        <script src="../js/snap.svg-min.js"></script>
         <script>
             $(document).ready(function () {
                 $().UItoTop({ easingType: 'easeOutQuart' });
             })
 		</script>
-
 	</head>
 	<body class="">
         <form id="form1" runat="server">
@@ -70,44 +68,35 @@
 <!--==============================Content=================================-->
 		<div class="content cont2">
 			<div class="container_12">
-                <div id="details">
+                <div id="delete">
                     <div class="autobox">
+                        <h2>Assign Task</h2>
+                        <p>Are you sure you want to assign this task to the following user?</p>
 
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" SelectCommand="SELECT * FROM [TaskFiles] WHERE ([TaskId] = @TaskId)">
-                            <SelectParameters>
-                                <asp:QueryStringParameter Name="TaskId" QueryStringField="TaskId" Type="Decimal" />
-                            </SelectParameters>
+                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:cs_PMS %>" 
+                            SelectCommand="SELECT aspnet_Users.UserName, StaffInfo.*, Department.* FROM aspnet_Users INNER JOIN StaffInfo ON aspnet_Users.UserId = StaffInfo.UserId INNER JOIN Department ON StaffInfo.DepartmentId = Department.DepartmentId WHERE (aspnet_Users.UserId = @UserId)">
+                            <selectparameters>
+		                        <asp:QueryStringParameter Name="UserId" QueryStringField="UserId" Type="String" />
+	                        </selectparameters>
                         </asp:SqlDataSource>
 
-                        <h2><asp:LinkButton ID="lblProjectName" runat="server"></asp:LinkButton></h2>
-
-                        <div class="text1 col2"><asp:Label ID="lblTaskName" runat="server"></asp:Label></div>
-                        <asp:Label ID="lblTaskDescription" runat="server"></asp:Label>
-                        <br /><br />
-                        <asp:Label ID="lblStatus" runat="server"></asp:Label>
-                        <br />
-
-                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1" >
-
+                        <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                             <itemTemplate>
 
-                                <br />
-                                <strong>Files: </strong><a href="../taskFiles/<%#Eval("EmployeeId")%>/<%#Eval("TaskFiles")%>"><%#Eval("TaskFiles")%></a>
-                                <br />
+                                <div class="profilePicture">
+                                    <div class="block3">
+                                        <asp:Image ID="ImgProfile" runat="server" src='<%# Eval ("Photo", "../images/employee/{0}") %>' />
+                                        <br />
+                                        <div class="text2"><%#Eval("FirstName")%> <%#Eval("MiddleName")%> <%#Eval("LastName")%></a></div>
+                                    </div>
+                                </div>
 
                             </itemTemplate>
-
                         </asp:Repeater>
-
-                        <asp:LinkButton ID="btnTake" runat="server" CssClass="btn">Take</asp:LinkButton>
-                        <asp:LinkButton ID="btnDeny" runat="server" CssClass="btn">Deny</asp:LinkButton>
-                        <asp:LinkButton ID="btnApprove" runat="server" CssClass="btn">Approve</asp:LinkButton>
-                        <br />
-                        <asp:FileUpload ID="FileUpload1" runat="server" />
-                        <br />
-                        <asp:LinkButton ID="btnUpload" runat="server" CssClass="btn">Upload</asp:LinkButton>
-                        <asp:LinkButton ID="btnAbandon" runat="server" CssClass="btn">Abandon</asp:LinkButton>
-                        <asp:LinkButton ID="btnAssign" runat="server" CssClass="btn">Assign</asp:LinkButton>
+                        <div class="deleteBtn">
+                            <asp:LinkButton ID="No" runat="server" CssClass="btn">No</asp:LinkButton>
+                            <asp:LinkButton ID="Yes" runat="server" CssClass="btn">Yes</asp:LinkButton>
+                        </div>
 				    </div>
 
 			    </div>
@@ -153,26 +142,6 @@
 		            $('.content').css('background-color', bgColor);
 		        });
 		    });
-		    (function () {
-		        function init() {
-		            var speed = 250,
-                    easing = mina.easeinout;
-		            [].slice.call(document.querySelectorAll('#grid > a')).forEach(function (el) {
-		                var s = Snap(el.querySelector('svg')), path = s.select('path'),
-                            pathConfig = {
-                                from: path.attr('d'),
-                                to: el.getAttribute('data-path-hover')
-                            };
-		                el.addEventListener('mouseenter', function () {
-		                    path.animate({ 'path': pathConfig.to }, speed, easing);
-		                });
-		                el.addEventListener('mouseleave', function () {
-		                    path.animate({ 'path': pathConfig.from }, speed, easing);
-		                });
-		            });
-		        }
-		        init();
-		    })();
 		</script>
 	<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
     </form>
