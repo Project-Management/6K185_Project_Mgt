@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <meta charset="utf-8"/>
-		<title>Contacts | Project Management System</title>
+		<title>Contact | Project Management System</title>
 		<link rel="icon" href="images/icon.ico">
 		<link rel="shortcut icon" href="images/icon.ico">
 		<link rel="stylesheet" href="css/style.css">
