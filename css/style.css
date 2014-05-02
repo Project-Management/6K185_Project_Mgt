@@ -969,9 +969,13 @@ a.button {
     }
 
 .searchBtn {
-    display: inline-block;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
     font: bold 16px 'Open Sans Condensed', sans-serif;
-    border: 0.2em solid #a2cac2;
+    border: 0.4em solid #a2cac2;
     padding: 4px 22px 4px 18px;
     background-color: #a2cac2;
     color: #fff;
@@ -982,14 +986,19 @@ a.button {
     border-top-right-radius: 10em;
     border-bottom-right-radius: 10em;
     margin: 0px;
+    height: 100%;
+    -webkit-appearance: none;
 }
 
     .searchBtn:hover {
     }
 
 .field {
-    border: 0.1em solid #a2cac2;
+    display: -ms-flexbox;
     display: flex;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
     position: relative;
     margin: 2em auto;
     width: 70%;
@@ -1001,9 +1010,14 @@ a.button {
 
     .field > input[type=text],
     .field > button {
-        display: block;
+        display: -ms-flexbox;
+        display: flex;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -webkit-flex;
         font: 14px 'Open Sans Condensed', sans-serif;
         margin: 0px;
+        height: auto;
     }
 
     .field > input[type=text] {
@@ -1017,9 +1031,8 @@ a.button {
         -moz-border-radius-bottomleft: 10em;
         border-top-left-radius: 10em;
         border-bottom-left-radius: 10em;
+        width:80%;
     }
-
-
 
 .projectDescription {
     margin-left:400px;
