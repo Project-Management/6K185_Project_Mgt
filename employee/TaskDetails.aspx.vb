@@ -62,7 +62,7 @@ Partial Class employee_TaskDetails
 
         If Finished = 0 Then
 
-            If UserId = "71e09b16-bfe6-4ffe-8676-06978100992d" Or UserId = "34be58a1-2261-43be-b4da-a6a090b6a85b" Then
+            If UserId = "069fa28e-fbea-43f0-a181-918492aabd34" Or UserId = "0172da70-15e9-435d-8e86-a369dcf2a1fc" Then
                 btnEdit.Visible = True
                 If EmployeeId = "" Then
 
